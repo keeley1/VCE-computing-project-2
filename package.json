@@ -1,0 +1,24 @@
+{
+  "name": "vce-computing-project-2",
+  "version": "1.0.0",
+  "description": "Creating a Google Chrome extension with the goal of allowing Goldsmiths students to chat within the university's Virtual Learning Environment, VCE = Virtual Chat Environment.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keeley1/VCE-computing-project-2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/keeley1/VCE-computing-project-2/issues"
+  },
+  "homepage": "https://github.com/keeley1/VCE-computing-project-2#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql": "^2.18.1"
+  }
+}

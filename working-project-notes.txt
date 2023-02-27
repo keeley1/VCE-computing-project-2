@@ -1,0 +1,4 @@
+dependencies currently installed:
+- node.js
+- express.js
+- MySQL
