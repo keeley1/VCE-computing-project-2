@@ -7,5 +7,4 @@ CREATE TABLE messages IF NOT EXISTS (id INT AUTO_INCREMENT, username VARCHAR(255
 
 #create user for database
 CREATE USER 'test_user'@'localhost' IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON virtual_chat_extension.* To 'test_user'@'localhost' IDENTIFIED BY 'password';
 GRANT ALL ON virtual_chat_extension.* TO 'test_user'@'localhost';
