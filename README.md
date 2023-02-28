@@ -53,7 +53,7 @@ node index.js
 ```
 If the project is running in the terminal, open up Google Chrome and navigate to "chrome://extensions/". Turn on the developer mode toggle in the corner and then select "load unpacked". You can then navigate to the directory in which you placed the project and select it. The project should then appear in your list of extensions. Now you can test and pin the project to the navbar.
 
-If you have got everything working correctly, the chrome extension homepage shoulf look like the following:
+If you have got everything working correctly, the chrome extension homepage should look like the following:
 
 <img src="/assets/version1-image.png" width="300">
 
