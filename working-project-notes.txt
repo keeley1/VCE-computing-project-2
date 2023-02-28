@@ -2,3 +2,6 @@ dependencies currently installed:
 - node.js
 - express.js
 - MySQL
+- socket.io
+
+Note that all socket.io related html and js files must be in the root directory for it to work correctly.

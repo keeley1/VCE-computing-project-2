@@ -13,7 +13,7 @@ html {
 /*---index page button styling---*/
 .index-button-container {
     text-align: center;
-    padding-top: 140px;
+    padding-top: 150px;
 }
 
 #button-one {
@@ -31,19 +31,79 @@ html {
     color: white;
 }
 
-/*---styling inputs---*/
-.register-container {
-    margin-left: 20px;
-    margin-top: 70px;
+/*---chat page styling---*/
+.user-info {
+    background-color: #c1c1c1;
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    width: 369px;
 }
 
-#user_name, #user_username, #user_email {
-    width: 90%;
+#button-two {
+    width: 25%;
     padding: 5px;
+    cursor: pointer;
+    border: none;
+    background-color: #55BCBC;
+    border-radius: 5px;
     margin-bottom: 10px;
+    margin-right: 200px;
 }
 
-#user_pass {
-    width: 90%;
-    padding: 5px;
+#button-two:hover {
+    background-color: #227d7d;
+    color: white;
 }
+
+.type-message {
+    width: 75%;
+
+}
+
+.send-message {
+    width: 20%;
+    cursor: pointer;
+    border: none;
+    background-color: #55BCBC;
+    border-radius: 5px;
+    height: 25px;
+    margin-left: 5px;
+}
+
+.send-message:hover {
+    background-color: #227d7d;
+    color: white;
+}
+
+.info-container {
+    display: flex;
+}
+
+#form {
+    position: fixed; 
+    bottom: 0; 
+    left: 0; 
+    right: 0; 
+    padding: 8px;
+    margin-left: 5px;
+    display: flex; 
+    box-sizing: border-box; 
+    backdrop-filter: blur(10px);
+}
+
+#messages { 
+    list-style-type: none; 
+    margin-bottom: 10px; 
+    padding: 0; 
+}
+
+#messages > li { 
+    padding: 0.5rem 1rem; 
+}
+
+#messages > li:nth-child(odd) { 
+    background: #efefef; 
+}
+

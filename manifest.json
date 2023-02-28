@@ -1,13 +1,17 @@
 {
-    "name": "VCE Virtual Chat Extension",
+    "name": "VCE Goldsmiths",
     "version": "1.0.0",
-    "description": "A tool for Goldsmiths students to chat with eachother on the VLE",
+    "description": "VCE Goldsmiths - virtual chat extension",
     "manifest_version": 3,
-    "author": "Keeley Gardner, Jake Foster, Arooj Ali, Faizaan Ahmed",
-    "permissions": ["storage", "declarativeContent", "activeTab", "scripting"],
+    "author": "Keeley Gardner",
+    "permissions": ["storage", "declarativeContent", "activeTab", "scripting", "http://chrome-extension/*"],
     "host_permissions": [""],
     "action":{
         "default_popup": "index.html",
-        "default_title": "VCE"
-    }
+        "default_title": "VCE Goldsmiths"
+    },
+    "content_scripts": [{
+        "matches": ["*://*/*"],
+        "js": ["index.js", "chat-script.js", "node_modules/socket.io/client-dist/socket.io.js"]
+    }]
 }

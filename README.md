@@ -7,3 +7,6 @@ Group members:
 - Arooj Ali
 - Faizaan Ahmed
 - Tiya Anderson
+
+MySQL database name: virtual_chat_extension
+
