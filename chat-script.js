@@ -1,11 +1,15 @@
-//load in sound
+//load in sounds
 var messageSound = new Audio('/assets/messageSound.mp3');
+var errorSound = new Audio('/assets/errorSound.mp3');
+var joinLeaveSound = new Audio('assets/joinLeaveSound.mp3');
 messageSound.load();
+errorSound.load();
+joinLeaveSound.load();
 
 var socket = io('http://localhost:8000');
 
 //getting username
-userName = prompt("Welcome to VCE! Please enter your name:");
+userName = prompt("Welcome to VCE! Please enter a username 15 characters or smaller:");
 if (!userName) {
     userName = 'User' + Math.round(Math.random() * 10000);
 }
@@ -18,6 +22,51 @@ socket.on('connect', () => {
     socket.emit('joined', userName);
 });
 
+//-----username checking-----//
+socket.on('takenUsername', (userName) => {
+    var takenNameError = document.getElementById('name-error-message');
+    var backgroundFade = document.querySelector('.message-container');
+
+    takenNameError.innerHTML = `Oops!! ${userName} is already taken!!`;
+
+    takenNameError.classList.add('username-error');
+    backgroundFade.style.opacity = '0.5';
+    errorSound.play();
+
+    setTimeout(function() {
+        takenNameError.innerHTML = '';
+        userName = prompt("Please enter a different username:");
+        if (!userName) {
+            userName = 'User' + Math.round(Math.random() * 10000);
+        }
+        socket.emit('joined', userName);
+        takenNameError.classList.remove('username-error');
+        backgroundFade.style.opacity = '1';
+    }, 3000);
+});
+
+socket.on('longUsername', (userName) => {
+    var takenNameError = document.getElementById('name-error-message');
+    var backgroundFade = document.querySelector('.message-container');
+
+    takenNameError.innerHTML = `Oops!! ${userName} is too long!!`;
+
+    takenNameError.classList.add('username-error');
+    backgroundFade.style.opacity = '0.5';
+    errorSound.play();
+
+    setTimeout(function() {
+        takenNameError.innerHTML = '';
+        userName = prompt("Please enter a username 15 characters or smaller:");
+        if (!userName) {
+            userName = 'User' + Math.round(Math.random() * 10000);
+        }
+        socket.emit('joined', userName);
+        takenNameError.classList.remove('username-error');
+        backgroundFade.style.opacity = '1';
+    }, 3000);
+});
+
 //get messages from the html page
 var form = document.getElementById('form');
 var input = document.getElementById('input');
@@ -28,13 +77,11 @@ form.onsubmit = function(e) {
 
     //handle empty messages
     if (input.value.length === 0) {
-        var lengthError = document.getElementById('error-messages');
+        //call error message function
+        showErrorMessage(`Oops! You can't send an empty message!`);
 
         //error message timer - lasts for 3 seconds
-        lengthError.innerHTML = `Oops!! You can't send an empty message!`;
-        setTimeout(function() {
-            lengthError.innerHTML = '';
-        }, 3000); 
+        setTimeout(hideErrorMessage, 3000);
     } else {
         socket.emit('message', input.value);
         input.value = '';
@@ -42,19 +89,25 @@ form.onsubmit = function(e) {
     }
 }
 
-//ensure each new message is on a new line
-socket.on('message', function(msg, playSound) {
-    //messages.innerHTML = msg + '<br/>' + messages.innerHTML;
+socket.on('longMessage', function(msg) {
+    showErrorMessage('Oops! Your message is too long!');
+    setTimeout(hideErrorMessage, 3000);
+});
 
+//ensure each new message is on a new line
+socket.on('message', function(msg, playSound, joinLeave) {
     if (playSound) {
         messageSound.play();
         console.log('sound played');
+    }
+    else if (joinLeave) {
+        joinLeaveSound.play();
     }
 
     var item = document.createElement('li');
     item.textContent = msg;
     messages.appendChild(item);
-    window.scrollTo(0, document.body.scrollHeight);
+    item.scrollIntoView();
 });
 
 //counting number of users
@@ -68,5 +121,30 @@ socket.on('userList', function(users) {
     var allUsers = document.getElementById('users-in-chat');
     allUsers.innerHTML = 'Users: ' + users.join(', ');
 });
+
+//show error messages
+function showErrorMessage(message) {
+    var errorMessage = document.getElementById('error-messages');
+    var fadeBackground = document.querySelector('.message-container');
+
+    errorMessage.innerHTML = message;
+    errorMessage.classList.add('chat-errors');
+
+    //fade background so message is clearer
+    fadeBackground.style.opacity = '0.5';
+    errorSound.play();
+}
+
+//hide error messages
+function hideErrorMessage() {
+    var errorMessage = document.getElementById('error-messages');
+    var fadeBackground = document.querySelector('.message-container');
+
+    errorMessage.innerHTML = '';
+    errorMessage.classList.remove('chat-errors');
+
+    //return background to full opacity
+    fadeBackground.style.opacity = '1';
+}
 
 
