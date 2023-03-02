@@ -9,6 +9,7 @@ const connection = require("./utils/db-connection");
 app.use(express.static(__dirname));
 
 let playSound = true;
+let joinLeave = true;
 
 connection.connect((err) => {
     if (err) throw err;
@@ -30,7 +31,6 @@ connection.connect((err) => {
 let userNumber = 0;
 let users = new Array();
 
-//basic socket.io commands printing to the console
 io.on('connection', (socket) => {
     console.log('new client connected!');
     //count number of users
@@ -40,49 +40,66 @@ io.on('connection', (socket) => {
     retrieveMessages((err, messages) => {
         if (err) throw err;
         messages.forEach((message) => {
-            socket.emit('message', `${message.username}: ${message.message}`, playSound = false);
+            socket.emit('message', `${message.username}: ${message.message}`, playSound = false, joinLeave = false);
         });
     });
-
-    //welcome user after 3 seconds
-    setTimeout(function(){
-        socket.emit('message', 'Welcome to VCE!');
-    }, 3000);
 
     var userName;
     socket.on('joined', (who) => {
         userName = who;
-        users.push(userName);
-        io.emit('userList', users);
-        console.log(users);
+        //error handling for same username being entered
+        if (users.indexOf(userName) !== -1) {
+            console.log(`${userName} is taken!`);
+            socket.emit('takenUsername', userName);
+        }
+        //error handling for too long username
+        if (userName.length > 15) {
+            console.log(`username too long`);
+            socket.emit('longUsername', userName);
+        }
+        else {
+            //welcome user after 2 seconds
+            setTimeout(function(){
+                socket.emit('message', 'Welcome to VCE!');
+            }, 2000);
 
-        console.log(`${userName} joined`);
-        //emit when user joins the chat
-        socket.broadcast.emit('message', `${who} joined the chat`, playSound = true);
+            users.push(userName);
+            io.emit('userList', users);
+            console.log(`${userName} joined`);
+            console.log(`current users: ${users}`);
+
+            //emit when user joins the chat
+            socket.broadcast.emit('message', `${who} joined the chat`, playSound = false);
+        }
     });
-    socket.on('message', (msg, playSound) => {
-        console.log(`Received message from ${userName}`);    
+    socket.on('message', (msg, playSound, joinLeave) => {
+        if (msg.length <= 250) {
+            console.log(`Received message from ${userName}`);    
 
-        const insertMessageSql = `INSERT INTO messages (username, message) VALUES (?, ?)`;
-        const values = [userName, msg];
+            const insertMessageSql = `INSERT INTO messages (username, message) VALUES (?, ?)`;
+            const values = [userName, msg];
         
-        connection.query(insertMessageSql, values, (err, result) => {
-            if (err) throw err;
-            console.log(`Successfully inserted message into the database`);
-         });
+            connection.query(insertMessageSql, values, (err, result) => {
+                if (err) throw err;
+                console.log(`Successfully inserted message into the database`);
+            });
 
-        //emit the message to users in the room + the username
-        io.emit('message', `${userName}: ${msg}`, playSound = true);
+            //emit the message to users in the room + the username
+            io.emit('message', `${userName}: ${msg}`, playSound = true, joinLeave = false);
+        }
+        else {
+            socket.emit('longMessage', msg);
+        }
     });
     socket.on('disconnect', () => {
         let index = users.indexOf(userName);
         if (index > -1) {
             users.splice(index, 1);
         }
-        console.log(users);
+        console.log(`current users: ${users}`);
         io.emit('userList', users);
 
-        io.emit('message', `${userName} has left the chat`, playSound = true);
+        io.emit('message', `${userName} has left the chat`, playSound = false, joinLeave = true);
         userNumber--;
         io.emit('userNumber', userNumber);
     });
@@ -92,5 +109,7 @@ io.on('connection', (socket) => {
 server.listen(8000, () => {
     console.log('Server listening on port 8000');
 });
+
+
 
 
