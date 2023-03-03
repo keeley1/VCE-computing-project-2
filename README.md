@@ -8,6 +8,9 @@ Creating a Google Chrome extension with the goal of allowing Goldsmiths students
 - Faizaan Ahmed
 - Tiya Anderson
 
+### Contributors:
+- Keeley Gardner
+
 ### Prerequisites
 Before running the project, the following must be downloaded onto your machine.
 - GitHub desktop
