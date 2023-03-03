@@ -69,7 +69,7 @@ io.on('connection', (socket) => {
             console.log(`current users: ${users}`);
 
             //emit when user joins the chat
-            socket.broadcast.emit('message', `${who} joined the chat`, playSound = false);
+            socket.broadcast.emit('message', `${who} joined the chat`, playSound = false, joinLeave = true);
         }
     });
     socket.on('message', (msg, playSound, joinLeave) => {
@@ -90,6 +90,9 @@ io.on('connection', (socket) => {
         else {
             socket.emit('longMessage', msg);
         }
+    });
+    socket.on('file', (fileData) => {
+        io.emit('file', fileData);
     });
     socket.on('disconnect', () => {
         let index = users.indexOf(userName);
