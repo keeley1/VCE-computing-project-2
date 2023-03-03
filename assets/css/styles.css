@@ -144,9 +144,23 @@ html {
 }
 
 /*-----file sharing styling-----*/
-#incoming-file {
+.file-upload-button {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    background-color: #0f83ff;
+    color: #fff;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+  .file-upload-button:hover {
+    background-color: #9bcbff;
+    color: black;
+}
+  
+input[type="file"] {
+    display: none;
 }
