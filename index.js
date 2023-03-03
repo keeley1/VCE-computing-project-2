@@ -48,9 +48,10 @@ io.on('connection', (socket) => {
     socket.on('joined', (who) => {
         userName = who;
         //error handling for same username being entered
-        if (users.indexOf(userName) !== -1) {
+        if (users.includes(userName)) {
             console.log(`${userName} is taken!`);
             socket.emit('takenUsername', userName);
+            return;
         }
         //error handling for too long username
         if (userName.length > 15) {

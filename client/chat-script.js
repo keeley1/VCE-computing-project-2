@@ -1,7 +1,7 @@
 //load in sounds
-var messageSound = new Audio('/assets/messageSound.mp3');
-var errorSound = new Audio('/assets/errorSound.mp3');
-var joinLeaveSound = new Audio('assets/joinLeaveSound.mp3');
+var messageSound = new Audio('../assets/messageSound.mp3');
+var errorSound = new Audio('../assets/errorSound.mp3');
+var joinLeaveSound = new Audio('../assets/joinLeaveSound.mp3');
 messageSound.load();
 errorSound.load();
 joinLeaveSound.load();
