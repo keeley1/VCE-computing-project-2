@@ -45,7 +45,7 @@ io.on('connection', (socket) => {
     });
 
     var userName;
-    socket.on('joined', (who) => {
+    socket.on('joined', (room, who) => {
         userName = who;
         //error handling for same username being entered
         if (users.includes(userName)) {
@@ -64,21 +64,22 @@ io.on('connection', (socket) => {
                 socket.emit('message', 'Welcome to VCE!');
             }, 2000);
 
+            socket.join(room);
             users.push(userName);
-            io.emit('userList', users);
-            console.log(`${userName} joined`);
-            console.log(`current users: ${users}`);
+            io.to(room).emit('userList', users);
+            console.log(`${userName} joined room ${room}`);
+            console.log(`current users in room ${room}: ${users}`);
 
             //emit when user joins the chat
-            socket.broadcast.emit('message', `${who} joined the chat`, playSound = false, joinLeave = true);
+            socket.to(room).emit('message', `${who} joined the chat`, playSound = false, joinLeave = true);
         }
     });
-    socket.on('message', (msg, playSound, joinLeave) => {
+    socket.on('message', (msg, room, playSound, joinLeave) => {
         if (msg.length <= 250) {
-            console.log(`Received message from ${userName}`);    
+            console.log(`Received message from ${userName} in room ${room}`);    
 
-            const insertMessageSql = `INSERT INTO messages (username, message) VALUES (?, ?)`;
-            const values = [userName, msg];
+            const insertMessageSql = `INSERT INTO messages (username, message, room) VALUES (?, ?, ?)`;
+            const values = [userName, msg, room];
         
             connection.query(insertMessageSql, values, (err, result) => {
                 if (err) throw err;
@@ -86,7 +87,7 @@ io.on('connection', (socket) => {
             });
 
             //emit the message to users in the room + the username
-            io.emit('message', `${userName}: ${msg}`, playSound = true, joinLeave = false);
+            io.to(room).emit('message', `${userName}: ${msg}`, playSound = true, joinLeave = false);
         }
         else {
             socket.emit('longMessage', msg);
@@ -102,11 +103,14 @@ io.on('connection', (socket) => {
         }
         console.log(`current users: ${users}`);
         io.emit('userList', users);
-
-        io.emit('message', `${userName} has left the chat`, playSound = false, joinLeave = true);
+    
+        //send message to remaining users
+        socket.broadcast.emit('message', `${userName} has left the chat`, playSound = false, joinLeave = true);
+        socket.leaveAll();
+    
         userNumber--;
         io.emit('userNumber', userNumber);
-    });
+    });    
 });
 
 

@@ -19,7 +19,7 @@ chrome.runtime.onStartup.addListener(function() {
 });
 
 socket.on('connect', () => {
-    socket.emit('joined', userName);
+    socket.emit('joined', 'default', userName);
 });
 
 //-----username checking-----//
@@ -39,7 +39,7 @@ socket.on('takenUsername', (userName) => {
         if (!userName) {
             userName = 'User' + Math.round(Math.random() * 10000);
         }
-        socket.emit('joined', userName);
+        socket.emit('joined', 'default', userName);
         takenNameError.classList.remove('username-error');
         backgroundFade.style.opacity = '1';
     }, 3000);
@@ -61,7 +61,7 @@ socket.on('longUsername', (userName) => {
         if (!userName) {
             userName = 'User' + Math.round(Math.random() * 10000);
         }
-        socket.emit('joined', userName);
+        socket.emit('joined', 'default', userName);
         takenNameError.classList.remove('username-error');
         backgroundFade.style.opacity = '1';
     }, 3000);
@@ -83,7 +83,7 @@ form.onsubmit = function(e) {
         //error message timer - lasts for 3 seconds
         setTimeout(hideErrorMessage, 3000);
     } else {
-        socket.emit('message', input.value);
+        socket.emit('message', input.value, 'default');
         input.value = '';
         input.focus();
     }
@@ -95,7 +95,7 @@ socket.on('longMessage', function(msg) {
 });
 
 //ensure each new message is on a new line
-socket.on('message', function(msg, playSound, joinLeave) {
+socket.on('message', function(msg, room, playSound, joinLeave) {
     if (playSound) {
         messageSound.play();
         console.log('sound played');
@@ -146,5 +146,3 @@ function hideErrorMessage() {
     //return background to full opacity
     fadeBackground.style.opacity = '1';
 }
-
-
