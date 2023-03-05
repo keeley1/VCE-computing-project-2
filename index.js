@@ -54,10 +54,10 @@ io.on('connection', (socket) => {
             return;
         }
         //error handling for too long username
-        if (userName.length > 15) {
+        if (typeof userName !== 'undefined' && userName.length > 15) {
             console.log(`username too long`);
             socket.emit('longUsername', userName);
-        }
+          }
         else {
             //welcome user after 2 seconds
             setTimeout(function(){
