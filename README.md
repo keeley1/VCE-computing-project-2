@@ -36,7 +36,7 @@ USE virtual_chat_extension;
 ```
 Then to create the table:
 ```
-CREATE TABLE messages (id INT AUTO_INCREMENT, username VARCHAR(255) NOT NULL, message TEXT NOT NULL, message_timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, room VARCHAR(100) NOT NULL, PRIMARY KEY(id));
+CREATE TABLE messages IF NOT EXISTS (id INT AUTO_INCREMENT, username VARCHAR(255) NOT NULL, message TEXT NOT NULL, message_timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY(id));
 ```
 Finally, we need to create a user for the database:
 ```
