@@ -111,7 +111,7 @@ html {
 
 .message-container {
     overflow-y: auto;
-    height: 360px;
+    height: 310px;
 }
 
 /*---error styling---*/
@@ -145,10 +145,11 @@ html {
 
 /*-----file sharing styling-----*/
 .file-upload-button {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: fixed; 
+    bottom: 50px; 
+    left: 10px; 
+    padding: 8px;
+    margin-left: 5px;
     background-color: #0f83ff;
     color: #fff;
     padding: 8px;

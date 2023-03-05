@@ -11,11 +11,24 @@ socket.on('file', (fileData) => {
     fileLink.download = fileData.name;
     fileLink.textContent = `Download ${fileData.name}`;
 
+    //styling the link to download file
+    fileLink.style.color = 'black';
+
+    //styling on mouse hover
+    fileLink.addEventListener('mouseenter', () => {
+        fileLink.style.color = 'gray';
+    });
+
+    fileLink.addEventListener('mouseleave', () => {
+        fileLink.style.color = 'black';
+    });
+
     const listItem = document.createElement('li');
     listItem.appendChild(fileLink);
 
     const messages = document.getElementById('messages');
     messages.appendChild(listItem);
+    listItem.scrollIntoView();
 });
 
 function sendFile(file) {
