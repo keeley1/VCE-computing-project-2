@@ -1,3 +1,8 @@
+body {
+    background-color: rgb(40, 40, 40);
+    color: white;
+}
+
 html {
     width: 400px;
     height: 600px;
@@ -22,6 +27,7 @@ html {
     cursor: pointer;
     border: none;
     background-color: #55BCBC;
+    color: black;
     border-radius: 5px;
     margin-bottom: 15px;
 }
@@ -33,7 +39,7 @@ html {
 
 /*---chat page styling---*/
 .user-info {
-    background-color: #c1c1c1;
+    background-color: #7a7a7a;
     border-radius: 5px;
     padding-left: 15px;
     padding-top: 2px;
@@ -44,6 +50,9 @@ html {
 
 .type-message {
     width: 76%;
+    background-color: #444444;
+    border: none;
+    color: white;
 }
 
 .send-message {
@@ -51,6 +60,7 @@ html {
     cursor: pointer;
     border: none;
     background-color: #55BCBC;
+    color: black;
     border-radius: 5px;
     height: 25px;
     margin-left: 5px;
@@ -89,7 +99,7 @@ html {
 }
 
 #messages > li:nth-child(odd) { 
-    background: #efefef; 
+    background: #444444; 
 }
 
 .message-container {
@@ -157,7 +167,7 @@ input[type="file"] {
     left: 0;
     height: 100%;
     z-index: 1;
-    background-color: #f1f1f1;
+    background-color: #343434;
     overflow-x: hidden;
     transition: 0.5s;
 }
@@ -203,12 +213,12 @@ input[type="file"] {
 .menu p a {
     display: block;
     background-color: #55BCBC;
+    color: black;
     padding: 5px;
     margin-left: 60px;
     margin-right: 60px;
     border-radius: 5px;
     text-decoration: none;
-    color: black;
     text-align: center;
 }
 
@@ -219,4 +229,9 @@ input[type="file"] {
 
 .menu-option {
     margin-top: 200px;
+}
+
+.dark {
+    background-color: black;
+    color: white;
 }

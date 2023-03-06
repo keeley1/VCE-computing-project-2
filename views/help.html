@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat</title>
-    <script src="../node_modules/socket.io/client-dist/socket.io.js"></script>
     <link rel="stylesheet" href="/assets/css/styles.css" id="theme-link">
+    <title>Help</title>
 </head>
 <body>
-    <div class="header">
+    <div class="header-container">
         <div class="title">
             <h1>VCE Goldsmiths</h1>
         </div>
     </div>
+    <h1>Help</h1>
 
     <!--collapsing menu-->
     <div id="chat-menu" class="menu">
@@ -27,28 +27,6 @@
     <div id="menu-button" class="menu-button">
         <button id="openbtn">&#9776;</button>
     </div>
-    
-    <div class="user-info">
-        <p id="user-number"></p>
-        <p id="users-in-chat"></p>
-    </div>
-    <div class="message-container">
-        <ul id="messages"></ul>
-    </div>
-    <label for="incoming-file" class="file-upload-button">Choose a file</label>
-    <input type="file" id="incoming-file" name="incoming-file">
-    <div class="name-error-container">
-        <p id="name-error-message"></p>
-    </div>
-    <p id="error-messages"></p>
-    <div class="messaging-area">
-        <form id="form">
-            <input id="input" type="text" autocomplete="off" class="type-message">
-            <input id="input-button" type="submit" value="Send" class="send-message">    
-        </form>
-    </div>
-    <script src="../client/chat-script.js"></script>
-    <script src="../client/file-sharing-script.js"></script>
     <script src="../client/collapsing-menu-script.js"></script>
     <script src="../client/dark-mode-script.js"></script>
 </body>
