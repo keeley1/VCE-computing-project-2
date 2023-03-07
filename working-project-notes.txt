@@ -5,3 +5,13 @@ dependencies currently installed:
 - socket.io
 
 Note that all socket.io related html and js files must be in the root directory for it to work correctly.
+
+Things that people can work on:
+- Search bar to search for messages
+- Toggle sound in menu
+- Toggle dark mode outside of menu
+- Private chat???
+- Moderation for messages??
+- Sending emojis
+- Sending gifs
+- Remember name when returning to chat
