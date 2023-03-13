@@ -28,13 +28,24 @@
         <button id="openbtn">&#9776;</button>
     </div>
     
-    <div class="user-info">
-        <p id="user-number"></p>
-        <p id="users-in-chat"></p>
+    <!--collapsing user in chat info-->
+    <div id="user-info-button">
+        <button id="open-user-info">Users in Chat</button>
     </div>
+    <div id="user-info" class="user-info">
+        <div id="user-info-style">
+            <p id="current-user"></p>
+            <p id="user-number"></p>
+            <p id="users-in-chat"></p>
+        </div>
+        <a href="#" id="close-user-info">&times;</a>
+    </div>
+
+    <!--message container-->
     <div class="message-container">
         <ul id="messages"></ul>
     </div>
+
     <label for="incoming-file" class="file-upload-button">Choose a file</label>
     <input type="file" id="incoming-file" name="incoming-file">
     <div class="name-error-container">
