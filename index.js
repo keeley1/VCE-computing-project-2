@@ -48,7 +48,7 @@ io.on('connection', (socket) => {
     socket.on('joined', (who) => {
         userName = who;
         //error handling for same username being entered
-        if (users.some(user => user.toLowerCase() === userName.toLowerCase())) {
+        if (users.includes(userName)) {
             console.log(`${userName} is taken!`);
             socket.emit('takenUsername', userName);
             return;
@@ -61,12 +61,11 @@ io.on('connection', (socket) => {
         else {
             //welcome user after 2 seconds
             setTimeout(function(){
-                socket.emit('message', `Hello ${userName}! Welcome to VCE!`);
+                socket.emit('message', 'Welcome to VCE!');
             }, 2000);
 
             users.push(userName);
             io.emit('userList', users);
-            io.emit('currentUser', userName);
             console.log(`${userName} joined`);
             console.log(`current users: ${users}`);
 

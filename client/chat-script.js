@@ -122,12 +122,6 @@ socket.on('userList', function(users) {
     allUsers.innerHTML = 'Users: ' + users.join(', ');
 });
 
-//display current user
-socket.on('currentUser', function(userName) {
-    var currentUser = document.getElementById('current-user');
-    currentUser.innerHTML = 'Chatting as: ' + userName;ç
-});
-
 //show error messages
 function showErrorMessage(message) {
     var errorMessage = document.getElementById('error-messages');

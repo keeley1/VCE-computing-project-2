@@ -32,7 +32,7 @@ html {
 }
 
 /*---chat page styling---*/
-/*.user-info {
+.user-info {
     background-color: #c1c1c1;
     border-radius: 5px;
     padding-left: 15px;
@@ -40,7 +40,7 @@ html {
     padding-bottom: 2px;
     width: 369px;
     margin-bottom: 5px;
-}*/
+}
 
 .type-message {
     width: 76%;
@@ -219,49 +219,4 @@ input[type="file"] {
 
 .menu-option {
     margin-top: 200px;
-}
-
-/*-----user info styling-----*/
-.user-info {
-    width: 0;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 100%;
-    z-index: 1;
-    background-color: #f1f1f1;
-    border-radius: 5px;
-    overflow-x: hidden;
-}
-
-#open-user-info {
-    padding: 8px;
-    border-radius: 5px;
-    background-color: #55BCBC;
-    color: black;
-    border: none;
-}
-
-#open-user-info:hover {
-    background-color: #227d7d;
-    color: white;
-    cursor: pointer;
-}
-
-#user-info-style {
-    padding: 20px;
-}
-
-#close-user-info {
-    text-decoration: none;
-    background-color: #55BCBC;
-    padding: 5px;
-    border-radius: 5px;
-    color: black;
-}
-
-#close-user-info:hover {
-    background-color: #227d7d;
-    color: white;
 }
