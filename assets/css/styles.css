@@ -254,14 +254,23 @@ input[type="file"] {
 }
 
 #close-user-info {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    padding: 5px 8px 5px 8px;
+    font-size: 16px;
     text-decoration: none;
-    background-color: #55BCBC;
-    padding: 5px;
-    border-radius: 5px;
     color: black;
+    background-color: #c0bebe;
+    border-radius: 2px;
 }
 
 #close-user-info:hover {
-    background-color: #227d7d;
-    color: white;
+    background-color: #d7d6d6;
+    color: black;
+}
+
+#user-info-button {
+    height: 30px;
 }

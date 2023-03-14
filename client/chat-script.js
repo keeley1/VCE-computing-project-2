@@ -14,9 +14,9 @@ if (!userName) {
     userName = 'User' + Math.round(Math.random() * 10000);
 }
 
-chrome.runtime.onStartup.addListener(function() {
+/*chrome.runtime.onStartup.addListener(function() {
     retrieveMessages();
-});
+});*/
 
 socket.on('connect', () => {
     socket.emit('joined', userName);
@@ -125,7 +125,7 @@ socket.on('userList', function(users) {
 //display current user
 socket.on('currentUser', function(userName) {
     var currentUser = document.getElementById('current-user');
-    currentUser.innerHTML = 'Chatting as: ' + userName;ç
+    currentUser.innerHTML = 'Chatting as: ' + userName;
 });
 
 //show error messages

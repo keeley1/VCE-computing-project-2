@@ -182,7 +182,7 @@ input[type="file"] {
     cursor: pointer;
 }
 
-#closebtn{
+#closebtn {
     position: absolute;
     top: 0;
     right: 0;
@@ -235,7 +235,7 @@ input[type="file"] {
     transform: translate(-50%, -50%);
     height: 100%;
     z-index: 1;
-    background-color: #f1f1f1;
+    background-color: #454545;
     border-radius: 5px;
     overflow-x: hidden;
 }
@@ -256,17 +256,23 @@ input[type="file"] {
 
 #user-info-style {
     padding: 20px;
+    color: white;
 }
 
 #close-user-info {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    padding: 5px 8px 5px 8px;
+    font-size: 16px;
     text-decoration: none;
-    background-color: #55BCBC;
-    padding: 5px;
-    border-radius: 5px;
     color: black;
+    background-color: #c0bebe;
+    border-radius: 2px;
 }
 
 #close-user-info:hover {
-    background-color: #227d7d;
-    color: white;
+    background-color: #d7d6d6;
+    color: black;
 }
