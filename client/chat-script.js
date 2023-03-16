@@ -119,8 +119,14 @@ socket.on('userNumber', function(count) {
 //display all users in chat
 socket.on('userList', function(users) {
     var allUsers = document.getElementById('users-in-chat');
-    allUsers.innerHTML = 'Users: ' + users.join(', ');
+    var userList = '<ul>';
+    for (var i = 0; i < users.length; i++) {
+        userList += '<li>' + users[i] + '</li>';
+    }
+    userList += '</ul>';
+    allUsers.innerHTML = userList;
 });
+
 
 //display current user
 socket.on('currentUser', function(userName) {

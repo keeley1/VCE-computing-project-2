@@ -24,6 +24,7 @@ html {
     background-color: #55BCBC;
     border-radius: 5px;
     margin-bottom: 15px;
+    transition: 0.6s;
 }
 
 #button-one:hover {
@@ -54,6 +55,7 @@ html {
     border-radius: 5px;
     height: 25px;
     margin-left: 5px;
+    transition: 0.6s;
 }
 
 .send-message:hover {
@@ -77,11 +79,19 @@ html {
     backdrop-filter: blur(10px);
 }
 
-#messages { 
-    list-style-type: none; 
-    margin-bottom: 10px; 
-    padding: 0; 
-    height: 300px;
+.message-container {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    height: 340px;
+    overflow-y: auto;
+    margin-top: 30px;
+}
+  
+#messages {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 #messages > li { 
@@ -90,11 +100,6 @@ html {
 
 #messages > li:nth-child(odd) { 
     background: #efefef; 
-}
-
-.message-container {
-    overflow-y: auto;
-    height: 340px;
 }
 
 /*---error styling---*/
@@ -138,6 +143,7 @@ html {
     padding: 8px;
     border-radius: 5px;
     cursor: pointer;
+    transition: 0.6s;
 }
 
 .file-upload-button:hover {
@@ -175,6 +181,7 @@ input[type="file"] {
     border-radius: 2px;
     padding: 5px 8px 5px 8px;
     font-size: 16px;
+    transition: 0.6s;
 }
 
 #openbtn:hover {
@@ -193,6 +200,7 @@ input[type="file"] {
     color: black;
     background-color: #c0bebe;
     border-radius: 2px;
+    transition: 0.6s;
 }
 
 #closebtn:hover {
@@ -210,6 +218,7 @@ input[type="file"] {
     text-decoration: none;
     color: black;
     text-align: center;
+    transition: 0.6s;
 }
 
 .menu p a:hover {
@@ -223,54 +232,28 @@ input[type="file"] {
 
 /*-----user info styling-----*/
 .user-info {
-    width: 0;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 100%;
-    z-index: 1;
-    background-color: #f1f1f1;
-    border-radius: 5px;
-    overflow-x: hidden;
-}
-
-#open-user-info {
-    padding: 8px;
-    border-radius: 5px;
-    background-color: #55BCBC;
-    color: black;
-    border: none;
-}
-
-#open-user-info:hover {
-    background-color: #227d7d;
-    color: white;
-    cursor: pointer;
-}
-
-#user-info-style {
-    padding: 20px;
-}
-
-#close-user-info {
     position: absolute;
-    top: 0;
-    right: 0;
-    margin: 10px;
-    padding: 5px 8px 5px 8px;
-    font-size: 16px;
-    text-decoration: none;
-    color: black;
-    background-color: #c0bebe;
-    border-radius: 2px;
+    top: 90px;
+    right: 10px;
+}
+  
+#user-info-style {
+    width: 170px;
+    margin-bottom: 10px;
+}
+  
+.user-info p {
+    margin: 0;
+    padding: 0;
+}
+  
+#user-container {
+    display: none;
 }
 
-#close-user-info:hover {
-    background-color: #d7d6d6;
-    color: black;
-}
 
-#user-info-button {
-    height: 30px;
-}
+  
+  
+
+
+

@@ -2,7 +2,7 @@ const themeLink = document.getElementById("theme-link");
 const toggleButton = document.getElementById("theme-toggle");
 const body = document.body;
 
-// check if the user has a saved preference
+//check if the user has a saved preference
 const isDarkMode = localStorage.getItem("isDarkMode") === "true";
 
 if (isDarkMode) {
