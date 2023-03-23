@@ -85,7 +85,8 @@ html {
     width: 100%;
     height: 340px;
     overflow-y: auto;
-    margin-top: 30px;
+    margin-top: 41px;
+    border-radius: 5px;
 }
   
 #messages {
@@ -96,6 +97,7 @@ html {
 
 #messages > li { 
     padding: 0.5rem 1rem; 
+    word-break: break-word;
 }
 
 #messages > li:nth-child(odd) { 
@@ -234,12 +236,14 @@ input[type="file"] {
 .user-info {
     position: absolute;
     top: 90px;
-    right: 10px;
+    right: 8px;
+    padding: 5px;
+    background-color: #55BCBC;
+    border-radius: 5px;
 }
   
 #user-info-style {
     width: 170px;
-    margin-bottom: 10px;
 }
   
 .user-info p {
