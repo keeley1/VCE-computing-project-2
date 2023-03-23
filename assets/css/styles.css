@@ -255,6 +255,20 @@ input[type="file"] {
     display: none;
 }
 
+/*-----dark mode toggle button-----*/
+#theme-toggle {
+    border: none;
+    border-radius: 2px;
+    padding: 5px 8px 5px 8px;
+    background-color: #55BCBC;
+    transition: 0.6s;
+}
+
+#theme-toggle:hover {
+    background-color: #227d7d;
+    color: white;
+    cursor: pointer;
+}
 
   
   
