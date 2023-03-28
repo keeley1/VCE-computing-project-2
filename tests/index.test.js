@@ -1,56 +1,60 @@
-const io = require('socket.io-client/dist/socket.io.js');
-const serverUrl = 'http://localhost:8000';
+const { createServer } = require("http");
 
-console.log('test');
+const { Server } = require("socket.io");
+const Client = require("../node_modules/socket.io/client-dist/socket.io.js");
+const connection = require("../utils/db-connection");
+const { retrieveMessages } = require('../index.js');
 
-describe('Socket.IO Server', () => {
-  let clientSocket;
+describe("my awesome project", () => {
+  let io, serverSocket, clientSocket;
 
   beforeAll((done) => {
-    // connect to server before each test
-    clientSocket = io(serverUrl);
-
-    // log events emitted by the client socket
-    clientSocket.onAny((event, ...args) => {
-      console.log(`Client socket event: ${event}`, ...args);
+    const server = require('http').createServer();
+    io = new Server(server);
+    io.listen(8000, () => {
+      const port = io.httpServer.address().port;
+      clientSocket = new Client(`http://localhost:${port}`);
+      io.on("connection", (socket) => {
+        serverSocket = socket;
+      });
+      clientSocket.on("connect", done);
     });
-
-    // log connection errors
-    clientSocket.on('connect_error', (error) => {
-      console.log('Client socket connection error:', error);
-      done.fail(error);
-    });
-
-    // wait for connection to be established before running tests
-    clientSocket.on('connect', () => {
-      console.log('Client socket connected to server');
-      done();
-    });
-  }, 10000);
-
-  afterAll(() => {
-    // disconnect from server after each test
-    clientSocket.disconnect();
   });
 
-  it('should emit "message" event with correct message', (done) => {
-    const message = 'Hello World!';
+  afterAll(() => {
+    io.close();
+    clientSocket.close();
+  });
 
-    // emit the message to the server
-    clientSocket.emit('message', message, false, false);
-
-    // listen for the same message from the server
-    clientSocket.on('message', (msg, playSound, joinLeave) => {
-      // assert that the message received from the server matches the sent message
-      expect(msg).toBe(message);
-
-      // end the test
+  test("should work", (done) => {
+    clientSocket.on("hello", (arg) => {
+      expect(arg).toBe("world");
       done();
     });
-  }, 10000); // set timeout to 10000 milliseconds
+    serverSocket.emit("hello", "world");
+  });
+
+  test("should work (with ack)", (done) => {
+    serverSocket.on("hi", (cb) => {
+      cb("hola");
+    });
+    clientSocket.emit("hi", (arg) => {
+      expect(arg).toBe("hola");
+      done();
+    });
+  });
+
+  test("should retrieve messages from the database", (done) => {
+    const message = "Hello World!";
+    const username = "testuser";
+
+    connection.query(`INSERT INTO messages (username, message) VALUES (?, ?)`, [username, message], (err) => {
+      if (err) throw err;
+
+      clientSocket.emit("retrieveMessages", (messages) => {
+        expect(messages).toContain(`${username}: ${message}`);
+        done();
+      });
+    });
+  });
 });
-
-
-
-
-
