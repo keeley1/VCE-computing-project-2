@@ -64,9 +64,14 @@ io.on('connection', (socket) => {
                 socket.emit('message', `Hello ${userName}! Welcome to VCE!`);
             }, 2000);
 
+            //set the userName property on the socket object
+            socket.userName = userName;
+
             users.push(userName);
             io.emit('userList', users);
-            io.emit('currentUser', userName);
+            
+            //emit the socket of current user
+            socket.emit('currentUser', userName);
             console.log(`${userName} joined`);
             console.log(`current users: ${users}`);
 

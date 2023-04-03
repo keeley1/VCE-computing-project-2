@@ -33,16 +33,6 @@ html {
 }
 
 /*---chat page styling---*/
-/*.user-info {
-    background-color: #c1c1c1;
-    border-radius: 5px;
-    padding-left: 15px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    width: 369px;
-    margin-bottom: 5px;
-}*/
-
 .type-message {
     width: 76%;
 }
@@ -138,14 +128,17 @@ html {
     position: fixed; 
     bottom: 50px; 
     left: 10px; 
-    padding: 8px;
+    padding: 5px;
     margin-left: 5px;
     background-color: #0f83ff;
     color: #fff;
-    padding: 8px;
     border-radius: 5px;
     cursor: pointer;
     transition: 0.6s;
+}
+
+#paperclip {
+    font-size: 20px;
 }
 
 .file-upload-button:hover {
@@ -240,6 +233,13 @@ input[type="file"] {
     padding: 5px;
     background-color: #55BCBC;
     border-radius: 5px;
+    transition: 0.6s;
+}
+
+.user-info:hover {
+    background-color: #227d7d;
+    color: white;
+    cursor: pointer;
 }
   
 #user-info-style {
@@ -253,6 +253,46 @@ input[type="file"] {
   
 #user-container {
     display: none;
+    background-color: #55BCBC;
+    color: black;
+    padding: 20px;
+    border-radius: 5px;
+    height: 200px;
+    width: 150px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#users-in-chat {
+    overflow-y: scroll;
+    height: 130px;
+}
+
+#users-title {
+    margin-top: 30px;
+}
+
+#users-in-chat {
+    margin-bottom: 30px;
+}
+
+#close-list {
+    position: absolute;
+    top: 5px; 
+    right: 5px; 
+    font-size: 16px;
+    background-color: #227d7d;
+    padding: 5px 8px 5px 8px;
+    border: none;
+    border-radius: 2px;
+    transition: 0.6s;
+  }
+
+#close-list:hover {
+    background-color: #55BCBC;
+    cursor: pointer;
 }
 
 /*-----dark mode toggle button-----*/

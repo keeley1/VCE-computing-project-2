@@ -5,7 +5,7 @@ const Client = require("../node_modules/socket.io/client-dist/socket.io.js");
 const connection = require("../utils/db-connection");
 const { retrieveMessages } = require('../index.js');
 
-describe("my awesome project", () => {
+describe("vce chat", () => {
   let io, serverSocket, clientSocket;
 
   beforeAll((done) => {

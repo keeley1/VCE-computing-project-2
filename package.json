@@ -22,6 +22,7 @@
     "mysql": "^2.18.1"
   },
   "devDependencies": {
+    "http": "^0.0.1",
     "jest": "^29.5.0",
     "socket.io": "^4.6.1"
   }

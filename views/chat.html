@@ -7,6 +7,7 @@
     <title>Chat</title>
     <script src="../node_modules/socket.io/client-dist/socket.io.js"></script>
     <link rel="stylesheet" href="/assets/css/styles.css" id="theme-link">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
 </head>
 <body>
     <div class="header">
@@ -34,9 +35,11 @@
             <p id="current-user"></p>
             <p id="user-number"></p>
         </div>
-        <div id="user-container" class="user-container">
-            <p id="users-in-chat"></p>
-        </div>
+    </div>
+    <div id="user-container" class="user-container">
+        <p id="users-title">Users in chat:</p>
+        <p id="users-in-chat"></p>
+        <button id="close-list">&times;</button>
     </div>
 
     <!--message container-->
@@ -44,8 +47,9 @@
         <ul id="messages"></ul>
     </div>
 
-    <label for="incoming-file" class="file-upload-button">Choose a file</label>
+    <label for="incoming-file" class="file-upload-button"><span id="paperclip" class="material-symbols-outlined">attach_file</span></label>
     <input type="file" id="incoming-file" name="incoming-file">
+
     <div class="name-error-container">
         <p id="name-error-message"></p>
     </div>
@@ -53,12 +57,13 @@
     <div class="messaging-area">
         <form id="form">
             <input id="input" type="text" autocomplete="off" class="type-message">
-            <input id="input-button" type="submit" value="Send" class="send-message">    
+            <input id="input-button" type="submit" value="&#10148;" class="send-message">    
         </form>
     </div>
     <script src="../client/chat-script.js"></script>
     <script src="../client/file-sharing-script.js"></script>
     <script src="../client/collapsing-menu-script.js"></script>
     <script src="../client/dark-mode-script.js"></script>
+    <script src="../client/list-of-users-script.js"></script>
 </body>
 </html>
