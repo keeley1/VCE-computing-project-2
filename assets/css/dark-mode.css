@@ -13,6 +13,7 @@ body {
     background-color: #55BCBC;
     padding: 8px;
     margin-bottom: 10px;
+    color: black;
 }
 
 /*---index page button styling---*/
@@ -38,28 +39,39 @@ body {
 }
 
 /*---chat page styling---*/
-/*.user-info {
-    background-color: #c1c1c1;
-    border-radius: 5px;
-    padding-left: 15px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    width: 369px;
-    margin-bottom: 5px;
-}*/
+.messaging-area {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+}
+
+#form {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    box-sizing: border-box;
+    backdrop-filter: blur(10px);
+}
 
 .type-message {
-    width: 76%;
+    width: 64%;
+    height: 20px;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 5px;
+    margin-right: 5px;
 }
 
 .send-message {
     width: 20%;
-    cursor: pointer;
+    height: 31px;
+    border-radius: 5px;
     border: none;
     background-color: #55BCBC;
-    border-radius: 5px;
-    height: 25px;
-    margin-left: 5px;
+    color: black;
+    cursor: pointer;
     transition: 0.6s;
 }
 
@@ -67,28 +79,12 @@ body {
     background-color: #227d7d;
     color: white;
 }
-
-.info-container {
-    display: flex;
-}
-
-#form {
-    position: fixed; 
-    bottom: 0; 
-    left: 0; 
-    right: 0; 
-    padding: 8px;
-    margin-left: 5px;
-    display: flex; 
-    box-sizing: border-box; 
-    backdrop-filter: blur(10px);
-}
-
+  
 .message-container {
     display: inline-block;
     vertical-align: top;
     width: 100%;
-    height: 340px;
+    height: 400px;
     overflow-y: auto;
     margin-top: 41px;
     border-radius: 5px;
@@ -106,8 +102,45 @@ body {
 }
 
 #messages > li:nth-child(odd) { 
-    background: #efefef; 
+    background: #565656; 
+}
+
+li a {
+    color: white;
+}
+
+li a:hover {
+    color: #c0bebe;
+}
+
+/*-----file sharing styling-----*/
+.file-upload-button {
+    background-color: #9bcbff;
     color: black;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.6s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    height: 20px;
+}
+
+#paperclip {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.file-upload-button:hover {
+    background-color: #0C51AC;
+    color: white;
+}
+  
+input[type="file"] {
+    display: none;
 }
 
 /*---error styling---*/
@@ -139,30 +172,6 @@ body {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-/*-----file sharing styling-----*/
-.file-upload-button {
-    position: fixed; 
-    bottom: 50px; 
-    left: 10px; 
-    padding: 8px;
-    margin-left: 5px;
-    background-color: #0f83ff;
-    color: #fff;
-    padding: 8px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.6s;
-}
-
-.file-upload-button:hover {
-    background-color: #9bcbff;
-    color: black;
-}
-  
-input[type="file"] {
-    display: none;
-}
-
 /*-----menu styling-----*/
 #chat-menu {
     width: 0;
@@ -171,7 +180,7 @@ input[type="file"] {
     left: 0;
     height: 100%;
     z-index: 1;
-    background-color: #f1f1f1;
+    background-color: #565656;
     overflow-x: hidden;
     transition: 0.5s;
 }
@@ -206,20 +215,32 @@ input[type="file"] {
     font-size: 16px;
     text-decoration: none;
     color: black;
-    background-color: #c0bebe;
+    background-color: #d7d6d6;
     border-radius: 2px;
     transition: 0.6s;
 }
 
 #closebtn:hover {
-    background-color: #d7d6d6;
+    background-color: #c0bebe;
     color: black;
 }
 
+.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+  
+.menu p {
+    margin: 10px 0;
+}
+  
 .menu p a {
     display: block;
     background-color: #55BCBC;
-    padding: 5px;
+    padding: 8px;
+    width: 140px;
     margin-left: 60px;
     margin-right: 60px;
     border-radius: 5px;
@@ -246,6 +267,14 @@ input[type="file"] {
     padding: 5px;
     background-color: #55BCBC;
     border-radius: 5px;
+    transition: 0.6s;
+    color: black;
+}
+
+.user-info:hover {
+    background-color: #227d7d;
+    color: white;
+    cursor: pointer;
 }
   
 #user-info-style {
@@ -259,19 +288,139 @@ input[type="file"] {
   
 #user-container {
     display: none;
+    background-color: #55BCBC;
+    color: black;
+    padding: 20px;
+    border-radius: 5px;
+    height: 200px;
+    width: 150px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-/*-----dark mode toggle button-----*/
+#users-in-chat {
+    overflow-y: scroll;
+    height: 130px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#users-in-chat ul {
+    padding: 0;
+    margin: 0;
+}
+
+#users-in-chat ul li {
+    list-style: none;
+    text-align: center;
+}
+
+#users-title {
+    margin-top: 30px;
+    text-align: center;
+    font-weight: 700;
+}
+
+#users-in-chat {
+    margin-bottom: 30px;
+}
+
+#close-list {
+    position: absolute;
+    top: 5px; 
+    right: 5px; 
+    font-size: 16px;
+    background-color: #efefef;
+    padding: 5px 8px 5px 8px;
+    border: none;
+    border-radius: 2px;
+    transition: 0.6s;
+    color: black;
+  }
+
+#close-list:hover {
+    background-color: #c0bebe;
+    cursor: pointer;
+}
+
+/*-----theme page styling-----*/
+.theme-container {
+    background-color: #565656;
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height: 200px;
+}
+
+#theme-description {
+    margin-top: 20px;
+}
+
 #theme-toggle {
     border: none;
-    border-radius: 5px;
-    padding: 5px 8px 5px 8px;
+    border-radius: 2px;
+    text-align: center;
+    padding: 7px 15px 7px 15px;
     background-color: #55BCBC;
     transition: 0.6s;
-}
+    margin: 0 auto;
+}  
 
 #theme-toggle:hover {
     background-color: #227d7d;
-    color: white;
     cursor: pointer;
+}
+
+/*-----help page styling-----*/
+.help-container {
+    background-color: #565656;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#common-questions {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#help-title {
+    text-align: center;
+}
+  
+.all-questions {
+    overflow-y: scroll;
+    height: 390px;
+}
+
+/*-----system status styling-----*/
+.system-container {
+    background-color: #565656;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+}
+
+.system-title {
+    margin-bottom: 20px;
+}
+
+.circle {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #8acf8d;
+}
+
+.front-or-back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
 }

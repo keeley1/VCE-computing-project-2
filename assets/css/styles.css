@@ -74,26 +74,6 @@ html {
     background-color: #227d7d;
     color: white;
 }
-
-.file-upload-button {
-    background-color: #0f83ff;
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.6s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    height: 20px;
-}
-
-#paperclip {
-    font-size: 20px;
-    font-weight: 700;
-}
   
 .message-container {
     display: inline-block;
@@ -120,9 +100,17 @@ html {
     background: #efefef; 
 }
 
+li a {
+    color: black;
+}
+
+li a:hover {
+    color: #c0bebe;
+}
+
 /*-----file sharing styling-----*/
 .file-upload-button {
-    background-color: #0f83ff;
+    background-color: #0C51AC;
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
@@ -339,15 +327,16 @@ input[type="file"] {
     top: 5px; 
     right: 5px; 
     font-size: 16px;
-    background-color: #227d7d;
+    background-color: #efefef;
     padding: 5px 8px 5px 8px;
     border: none;
     border-radius: 2px;
     transition: 0.6s;
+    color: black;
   }
 
 #close-list:hover {
-    background-color: #55BCBC;
+    background-color: #c0bebe;
     cursor: pointer;
 }
 
@@ -378,7 +367,6 @@ input[type="file"] {
 
 #theme-toggle:hover {
     background-color: #227d7d;
-    color: white;
     cursor: pointer;
 }
 
