@@ -105,7 +105,11 @@ socket.on('message', function(msg, playSound, joinLeave) {
     }
 
     var item = document.createElement('li');
-    item.textContent = msg;
+
+    //if message includes a link, wrap link in anchor tag
+    var message = msg.replace(/(?:^|\s)(https?\:\/\/\S+)/g, '<a href="$1" target="_blank">$1</a>');
+    
+    item.innerHTML = message;
     messages.appendChild(item);
     item.scrollIntoView();
 });

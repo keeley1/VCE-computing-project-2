@@ -47,19 +47,20 @@
         <ul id="messages"></ul>
     </div>
 
-    <label for="incoming-file" class="file-upload-button"><span id="paperclip" class="material-symbols-outlined">attach_file</span></label>
-    <input type="file" id="incoming-file" name="incoming-file">
-
     <div class="name-error-container">
         <p id="name-error-message"></p>
     </div>
     <p id="error-messages"></p>
+
     <div class="messaging-area">
         <form id="form">
+            <label for="incoming-file" class="file-upload-button"><span id="paperclip" class="material-symbols-outlined">attach_file</span></label>
+            <input type="file" id="incoming-file" name="incoming-file">    
             <input id="input" type="text" autocomplete="off" class="type-message">
-            <input id="input-button" type="submit" value="&#10148;" class="send-message">    
+            <input id="input-button" type="submit" value="Send &#10148;" class="send-message"> 
         </form>
     </div>
+
     <script src="../client/chat-script.js"></script>
     <script src="../client/file-sharing-script.js"></script>
     <script src="../client/collapsing-menu-script.js"></script>
