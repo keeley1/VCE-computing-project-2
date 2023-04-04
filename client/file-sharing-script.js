@@ -10,26 +10,36 @@ socket.on('file', (fileData) => {
     fileLink.href = fileData.urlData;
     fileLink.download = fileData.name;
     fileLink.textContent = `Download ${fileData.name}`;
-
-    //styling the link to download file
-    fileLink.style.color = 'black';
-
+  
+    // check if dark mode is on, and adjust link color accordingly
+    if (body.classList.contains("dark")) {
+      fileLink.style.color = 'white';
+    } else {
+      fileLink.style.color = 'black';
+    }
+  
     //styling on mouse hover
     fileLink.addEventListener('mouseenter', () => {
-        fileLink.style.color = 'gray';
+      fileLink.style.color = 'gray';
     });
-
+  
     fileLink.addEventListener('mouseleave', () => {
+      // check if dark mode is on, and adjust link color accordingly
+      if (body.classList.contains("dark")) {
+        fileLink.style.color = 'white';
+      } else {
         fileLink.style.color = 'black';
+      }
     });
-
+  
     const listItem = document.createElement('li');
     listItem.appendChild(fileLink);
-
+  
     const messages = document.getElementById('messages');
     messages.appendChild(listItem);
     listItem.scrollIntoView();
-});
+  });
+  
 
 function sendFile(file) {
     const reader = new FileReader();
