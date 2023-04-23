@@ -57,7 +57,7 @@ io.on('connection', (socket) => {
         if (typeof userName !== 'undefined' && userName.length > 15) {
             console.log(`username too long`);
             socket.emit('longUsername', userName);
-          }
+        }
         else {
             //welcome user after 2 seconds
             setTimeout(function(){
